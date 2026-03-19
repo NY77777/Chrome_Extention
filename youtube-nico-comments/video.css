@@ -1,0 +1,44 @@
+#nico-nico-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through to the video player */
+  z-index: 100; /* Try to be above video but maybe below YouTube UI if needed */
+  overflow: hidden;
+}
+
+.nico-comment {
+  position: absolute;
+  white-space: nowrap;
+  font-weight: bolder;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  /* Add strong drop shadow to be visible on varied video backgrounds */
+  text-shadow: 
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 3px #000,
+    0 0 8px rgba(0,0,0,0.8);
+  line-height: 1.2;
+  animation: nicoSlide linear forwards;
+  will-change: transform, left;
+}
+
+.nico-comment.member-comment {
+  color: #2eeb5c; /* A bright, legible green for members */
+}
+
+@keyframes nicoSlide {
+  0% {
+    left: 100%;
+    transform: translateX(0);
+  }
+  100% {
+    left: 0%;
+    transform: translateX(-100%);
+  }
+}

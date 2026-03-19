@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Nico Comments",
+  "version": "1.2",
+  "description": "Shows live/replay comments sliding across the screen on YouTube, like Nico Nico Douga.",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/live_chat?*"],
+      "js": ["content_chat.js"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content_video.js"],
+      "css": ["video.css"]
+    }
+  ]
+}
